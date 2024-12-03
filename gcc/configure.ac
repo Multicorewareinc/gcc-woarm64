@@ -4827,7 +4827,7 @@ EOF
     ;;
 
 changequote(,)dnl
-  i[34567]86-*-* | x86_64-*-*)
+  i[34567]86-*-* | x86_64-*-* | aarch64-*-*)
 changequote([,])dnl
     case $target_os in
       cygwin*)
