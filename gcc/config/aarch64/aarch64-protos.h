@@ -1263,4 +1263,7 @@ extern bool aarch64_gcs_enabled ();
 extern unsigned aarch64_data_alignment (const_tree exp, unsigned align);
 extern unsigned aarch64_stack_alignment (const_tree exp, unsigned align);
 
+extern void aarch64_pe_seh_unwind_emit (FILE *, rtx_insn *);
+extern void aarch64_print_reg (rtx, int, FILE*);
+
 #endif /* GCC_AARCH64_PROTOS_H */
