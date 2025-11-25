@@ -3301,8 +3301,14 @@ $(genprogerr:%=build/gen%$(build_exeext)): $(BUILD_ERRORS)
 # Remaining build programs.
 genprog = $(genprogerr) check checksum match
 
-# These programs need libs over and above what they get from the above list.
-build/genautomata$(build_exeext) : BUILD_LIBS += -lm
+# Do not link libm for generator programs on Cygwin or cross builds
+ifeq ($(findstring cygwin,$(host_os)),cygwin)
+  BUILD_MATHLIB =
+else
+  BUILD_MATHLIB = -lm
+endif
+
+build/genautomata$(build_exeext): BUILD_LIBS += $(BUILD_MATHLIB)
 
 build/genrecog$(build_exeext) : build/hash-table.o build/inchash.o
 build/gencfn-macros$(build_exeext) : build/hash-table.o build/vec.o \
