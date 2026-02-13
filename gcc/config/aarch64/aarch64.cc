@@ -21095,6 +21095,11 @@ aarch64_classify_symbol (rtx x, HOST_WIDE_INT offset)
       if (aarch64_tls_symbol_p (x))
 	return aarch64_classify_tls_symbol (x);
 
+    if (TARGET_PECOFF
+      && !SYMBOL_REF_LOCAL_P (x)
+      && !aarch64_symbol_binds_local_p (x))
+    return SYMBOL_FORCE_TO_MEM;
+
       switch (aarch64_cmodel)
 	{
 	case AARCH64_CMODEL_TINY_PIC:
