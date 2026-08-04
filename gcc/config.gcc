@@ -344,6 +344,7 @@ aarch64*-*-*)
 	extra_headers="${extra_headers} arm_neon_sve_bridge.h"
 	extra_headers="${extra_headers} arm_private_fp8.h"
 	extra_headers="${extra_headers} arm_private_neon_types.h"
+	extra_headers="${extra_headers} cross-stdarg.h"
 
 	c_target_objs="aarch64-c.o"
 	cxx_target_objs="aarch64-c.o"
