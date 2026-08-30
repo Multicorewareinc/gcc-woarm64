@@ -1524,7 +1524,7 @@ seh_pattern_emit (FILE *f, struct seh_frame_state *seh, rtx pat)
 		increment = INTVAL (XEXP (src, 1));
 		src = XEXP (src, 0);
 		if (dest == stack_pointer_rtx)
-		  seh_emit_stackalloc (f, seh, increment);
+		  mingw_pe_seh_emit_stackalloc (f, seh, increment);
 		break;
 
 	      case MINUS:
@@ -1534,7 +1534,7 @@ seh_pattern_emit (FILE *f, struct seh_frame_state *seh, rtx pat)
 		extend = XEXP (extend, 1);
 		if (dest == stack_pointer_rtx && src == stack_pointer_rtx
 		    && REGNO(extend) == R12_REGNUM) 
-		  seh_emit_stackalloc (f, seh, stack_alloc);
+		  mingw_pe_seh_emit_stackalloc (f, seh, stack_alloc);
    	      break;
 
 	      case CONST_INT:
