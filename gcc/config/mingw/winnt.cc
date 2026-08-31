@@ -1084,7 +1084,12 @@ seh_emit_save (FILE *f, struct seh_frame_state *seh,
   fputs ((FP_REGNUM_P (regno) ? " \t.seh_save_freg\t"
 	 : GP_REGNUM_P (regno) ?  " \t.seh_save_reg\t"
 	 : (gcc_unreachable (), "")), f);
-  aarch64_print_reg (reg, 0, f);
+  /* SEH takes d-form names for FP regs (d8-d15), not the mode-derived
+     v-form; seh_pattern_emit below already prints "d%ld".  */
+  if (FP_REGNUM_P (regno))
+    fprintf (f, "d%d", regno - V0_REGNUM);
+  else
+    aarch64_print_reg (reg, 0, f);
   fprintf (f, ", " HOST_WIDE_INT_PRINT_DEC " \n", abs (cfa_offset));
   return;
 #endif
