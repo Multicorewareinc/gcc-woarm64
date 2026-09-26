@@ -28968,7 +28968,7 @@ if test "${enable_fix_cortex_a53_843419+set}" = set; then :
 
 fi
 
-    ;;
+    ;;&
 
   # All TARGET_ABI_OSF targets.
   alpha*-*-linux* | alpha*-*-*bsd*)
