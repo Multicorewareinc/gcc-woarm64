@@ -4687,7 +4687,7 @@ AS_HELP_STRING([--disable-fix-cortex-a53-843419],
         esac
       ],
     [])
-    ;;
+    ;;&
 
   # All TARGET_ABI_OSF targets.
   alpha*-*-linux* | alpha*-*-*bsd*)
